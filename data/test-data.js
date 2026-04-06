@@ -1,16 +1,16 @@
-// Datos de prueba para PetTech
-// Todo centralizado aquí para reusar en múltiples flujos
+// Datos de prueba para PetTech - Django REST API
+// Credenciales reales del sistema
 
 // Credenciales de familia
 export const FAMILIA_CREDENTIALS = {
-  email: __ENV.FAMILIA_EMAIL || 'familia@test.com',
-  password: __ENV.FAMILIA_PASSWORD || 'password123',
+  email: __ENV.FAMILIA_EMAIL || 'familiatest@pettech.com',
+  password: __ENV.FAMILIA_PASSWORD || 'Test1234!',
 };
 
 // Credenciales de admin
 export const ADMIN_CREDENTIALS = {
-  email: __ENV.ADMIN_EMAIL || 'admin@test.com',
-  password: __ENV.ADMIN_PASSWORD || 'admin123',
+  email: __ENV.ADMIN_EMAIL || 'admin@pettech.com',
+  password: __ENV.ADMIN_PASSWORD || 'Admin1234!',
 };
 
 // Payload para login
