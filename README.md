@@ -316,3 +316,121 @@ k6 run \
 ---
 
 **PetTech QA Team** | Pruebas de Rendimiento con k6
+
+---
+
+## 🏗️ Arquitectura y Desarrollo
+
+### Spec-Driven Development (SDD)
+
+Este proyecto fue desarrollado siguiendo **SDD (Spec-Driven Development)**, una metodología que define especificaciones claras antes de la implementación.
+
+**Artefactos SDD almacenados en Engram:**
+- `sdd/pettech-k6-arquitectura/proposal` - Propuesta de arquitectura scalable
+- `architecture/pettech-k6-complete-project-django-rest-api` - Documentación completa del proyecto
+
+**Proceso SDD seguido:**
+1. **Exploración** (`sdd-explore`) - Análisis de requerimientos y endpoints
+2. **Propuesta** (`sdd-propose`) - Arquitectura modular junior-friendly
+3. **Especificación** (`sdd-spec`) - Requisitos detallados por flujo
+4. **Diseño** (`sdd-design`) - Estructura de archivos y contratos
+5. **Implementación** (`sdd-apply`) - Código siguiendo las specs
+6. **Verificación** (`sdd-verify`) - Tests funcionales
+
+### 🤖 OpenCode Agent + Agent Teams
+
+Este proyecto fue desarrollado con **OpenCode Agent** utilizando la arquitectura **Agent Teams Lite**:
+
+#### Modelos Utilizados
+
+| Rol | Modelo | Descripción |
+|-----|--------|-------------|
+| **Orchestrator** | **Kimi K2.5** | Coordina, delega y toma decisiones arquitectónicas |
+| **Exploración** | Claude Sonnet | Investigación de código y análisis estructural |
+| **Implementación** | Claude Sonnet | Escritura de código y aplicación de specs |
+| **Verificación** | Claude Sonnet | Validación contra especificaciones |
+
+#### Sistema de Skills
+
+**Skills SDD utilizadas:**
+- `sdd-init` - Inicialización del contexto SDD
+- `sdd-explore` - Exploración de requisitos
+- `sdd-propose` - Creación de propuestas
+- `sdd-spec` - Escritura de especificaciones
+- `sdd-design` - Diseño técnico
+- `sdd-tasks` - Desglose de tareas
+- `sdd-apply` - Implementación
+- `sdd-verify` - Verificación
+- `sdd-archive` - Archivado
+
+**Otras skills:**
+- `skill-registry` - Registro de habilidades del proyecto
+
+#### 🧠 Engram - Memoria Persistente
+
+**¿Qué es Engram?**
+Sistema de memoria persistente que sobrevive entre sesiones y compaciones de contexto.
+
+**Uso en este proyecto:**
+```javascript
+// Guardar artefactos SDD
+mem_save({
+  title: "PetTech K6 Architecture Proposal",
+  type: "architecture",
+  topic_key: "sdd/pettech-k6-arquitectura/proposal",
+  content: "..."
+});
+
+// Recuperar contexto
+mem_search({ query: "k6 architecture", project: "pettech-k6" });
+mem_get_observation({ id: "observation_id" });
+```
+
+**Topic Keys utilizados:**
+- `sdd-init/pettech-k6` - Contexto del proyecto
+- `sdd/pettech-k6-arquitectura/proposal` - Propuesta inicial
+- `sdd/pettech-k6-arquitectura/spec` - Especificaciones
+- `sdd/pettech-k6-arquitectura/design` - Diseño técnico
+- `sdd/pettech-k6-arquitectura/tasks` - Tareas de implementación
+- `architecture/pettech-k6-complete-project` - Estado final
+
+**Protocolo de Memoria:**
+- ✅ Auto-guardado después de decisiones arquitectónicas
+- ✅ Persistencia de bugfixes y descubrimientos
+- ✅ Recuperación de sesiones previas
+- ✅ Session summaries antes de cierre
+
+#### Agent Teams - Flujo de Trabajo
+
+```
+Usuario solicita feature
+        ↓
+[Orchestrator - Kimi K2.5] Analiza y delega
+        ↓
+[Skills SDD] Ejecutan fases secuenciales
+        ↓
+[Engram] Persiste artefactos
+        ↓
+[Implementación] Código final
+```
+
+**Ventajas de Agent Teams:**
+- 🎯 **Especialización**: Cada agente tiene un rol definido
+- 🔄 **Iteración**: Cada fase puede revisarse antes de continuar
+- 📚 **Memoria**: Contexto persistente entre sesiones
+- 🎨 **Consistencia**: Mismo estándar en todo el proyecto
+- 📊 **Trazabilidad**: Decisiones documentadas en Engram
+
+### Beneficios del Enfoque
+
+- ✅ **Arquitectura documentada** antes de escribir código
+- ✅ **Decisiones trazables** en memoria persistente
+- ✅ **Estructura escalable** desde el diseño inicial
+- ✅ **Código consistente** con patrones definidos
+- ✅ **Recuperación** de contexto tras compresiones
+- ✅ **Múltiples modelos** según la complejidad de la tarea
+
+---
+
+**Desarrollado con ❤️ para PetTech usando:**
+**SDD + OpenCode Agent Teams + Kimi K2.5 + Engram**
