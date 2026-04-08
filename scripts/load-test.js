@@ -1,24 +1,32 @@
 // PetTech K6 - Load Test
-// Punto de entrada principal que ejecuta los flujos
+// Test de carga normal: 10-30 usuarios, 3-4 minutos
+// Objetivo: Verificar comportamiento bajo carga esperada
 
 import { Trend } from 'k6/metrics';
-import { THRESHOLDS, DEFAULT_STAGES } from '../config/default.js';
+import { DEFAULT_STAGES, THRESHOLDS } from '../config/default.js';
 import { ejecutarFlujo as ejecutarFlujoFamilia } from '../flows/flujo-familia.js';
+import { ejecutarFlujo as ejecutarFlujoAdmin } from '../flows/flujo-admin.js';
 
-// Configuración de k6
 export const options = {
   stages: DEFAULT_STAGES,
   thresholds: THRESHOLDS,
 };
 
-// Métrica de éxito general del flujo
-const flujoSuccess = new Trend('flujo_success_rate');
+// Métricas de éxito por flujo
+const flujoFamiliaSuccess = new Trend('load_flujo_familia_success');
+const flujoAdminSuccess = new Trend('load_flujo_admin_success');
 
-// Función principal
 export default function () {
-  // Ejecuta el flujo de familia adoptante
-  const success = ejecutarFlujoFamilia();
-  
-  // Registra el éxito del flujo completo (1 = éxito, 0 = fallo)
-  flujoSuccess.add(success ? 1 : 0);
+  // Alternamos entre flujos según el ID del VU
+  const vu = __VU;
+
+  if (vu % 2 === 0) {
+    // Usuarios pares: Familia
+    const success = ejecutarFlujoFamilia();
+    flujoFamiliaSuccess.add(success ? 1 : 0);
+  } else {
+    // Usuarios impares: Admin
+    const success = ejecutarFlujoAdmin();
+    flujoAdminSuccess.add(success ? 1 : 0);
+  }
 }
